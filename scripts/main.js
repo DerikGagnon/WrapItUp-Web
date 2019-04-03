@@ -60,32 +60,34 @@ function writeNewPost(uid, username, picture, title, body) {
 }
 // [END write_fan_out]
 
-/**
- * Star/unstar post.
- */
-// [START post_stars_transaction]
-function toggleStar(postRef, uid) {
-  postRef.transaction(function(post) {
-    if (post) {
-      if (post.stars && post.stars[uid]) {
-        post.starCount--;
-        post.stars[uid] = null;
-      } else {
-        post.starCount++;
-        if (!post.stars) {
-          post.stars = {};
-        }
-        post.stars[uid] = true;
-      }
-    }
-    return post;
-  });
-}
-// [END post_stars_transaction]
+// /**
+//  * Star/unstar post.
+//  */
+// // [START post_stars_transaction]
+// function toggleStar(postRef, uid) {
+//   postRef.transaction(function(post) {
+//     if (post) {
+//       if (post.stars && post.stars[uid]) {
+//         post.starCount--;
+//         post.stars[uid] = null;
+//       } else {
+//         post.starCount++;
+//         if (!post.stars) {
+//           post.stars = {};
+//         }
+//         post.stars[uid] = true;
+//       }
+//     }
+//     return post;
+//   });
+// }
+// // [END post_stars_transaction]
 
 /**
  * Creates a post element.
  */
+
+ /*  -------------------------------------------------------------------- ITEM CREATION ---------------------------------------------------------------- */
 function createPostElement(postId, title, text, author, authorId, authorPic) {
   var uid = firebase.auth().currentUser.uid;
 
@@ -128,8 +130,8 @@ function createPostElement(postId, title, text, author, authorId, authorPic) {
 
   var addCommentForm = postElement.getElementsByClassName('add-comment')[0];
   var commentInput = postElement.getElementsByClassName('new-comment')[0];
-  var star = postElement.getElementsByClassName('starred')[0];
-  var unStar = postElement.getElementsByClassName('not-starred')[0];
+  //var star = postElement.getElementsByClassName('starred')[0];
+  //var unStar = postElement.getElementsByClassName('not-starred')[0];
 
   // Set values.
   postElement.getElementsByClassName('text')[0].innerText = text;
@@ -156,22 +158,22 @@ function createPostElement(postId, title, text, author, authorId, authorPic) {
 
   // Listen for likes counts.
   // [START post_value_event_listener]
-  var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
-  starCountRef.on('value', function(snapshot) {
-    updateStarCount(postElement, snapshot.val());
-  });
+  // var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
+  // starCountRef.on('value', function(snapshot) {
+  //   updateStarCount(postElement, snapshot.val());
+  // });
   // [END post_value_event_listener]
 
   // Listen for the starred status.
-  var starredStatusRef = firebase.database().ref('posts/' + postId + '/stars/' + uid);
-  starredStatusRef.on('value', function(snapshot) {
-    updateStarredByCurrentUser(postElement, snapshot.val());
-  });
+  // var starredStatusRef = firebase.database().ref('posts/' + postId + '/stars/' + uid);
+  // starredStatusRef.on('value', function(snapshot) {
+  //   updateStarredByCurrentUser(postElement, snapshot.val());
+  // });
 
   // Keep track of all Firebase reference on which we are listening.
   listeningFirebaseRefs.push(commentsRef);
-  listeningFirebaseRefs.push(starCountRef);
-  listeningFirebaseRefs.push(starredStatusRef);
+  // listeningFirebaseRefs.push(starCountRef);
+  // listeningFirebaseRefs.push(starredStatusRef);
 
   // Create new comment.
   addCommentForm.onsubmit = function(e) {
@@ -181,15 +183,15 @@ function createPostElement(postId, title, text, author, authorId, authorPic) {
     commentInput.parentElement.MaterialTextfield.boundUpdateClassesHandler();
   };
 
-  // Bind starring action.
-  var onStarClicked = function() {
-    var globalPostRef = firebase.database().ref('/posts/' + postId);
-    var userPostRef = firebase.database().ref('/user-posts/' + authorId + '/' + postId);
-    toggleStar(globalPostRef, uid);
-    toggleStar(userPostRef, uid);
-  };
-  unStar.onclick = onStarClicked;
-  star.onclick = onStarClicked;
+  // // Bind starring action.
+  // var onStarClicked = function() {
+  //   var globalPostRef = firebase.database().ref('/posts/' + postId);
+  //   var userPostRef = firebase.database().ref('/user-posts/' + authorId + '/' + postId);
+  //   toggleStar(globalPostRef, uid);
+  //   toggleStar(userPostRef, uid);
+  // };
+  // unStar.onclick = onStarClicked;
+  // star.onclick = onStarClicked;
 
   return postElement;
 }
@@ -197,33 +199,33 @@ function createPostElement(postId, title, text, author, authorId, authorPic) {
 /**
  * Writes a new comment for the given post.
  */
-function createNewComment(postId, username, uid, text) {
-  firebase.database().ref('post-comments/' + postId).push({
-    text: text,
-    author: username,
-    uid: uid
-  });
-}
+// function createNewComment(postId, username, uid, text) {
+//   firebase.database().ref('post-comments/' + postId).push({
+//     text: text,
+//     author: username,
+//     uid: uid
+//   });
+// }
 
 /**
  * Updates the starred status of the post.
  */
-function updateStarredByCurrentUser(postElement, starred) {
-  if (starred) {
-    postElement.getElementsByClassName('starred')[0].style.display = 'inline-block';
-    postElement.getElementsByClassName('not-starred')[0].style.display = 'none';
-  } else {
-    postElement.getElementsByClassName('starred')[0].style.display = 'none';
-    postElement.getElementsByClassName('not-starred')[0].style.display = 'inline-block';
-  }
-}
+// function updateStarredByCurrentUser(postElement, starred) {
+//   if (starred) {
+//     postElement.getElementsByClassName('starred')[0].style.display = 'inline-block';
+//     postElement.getElementsByClassName('not-starred')[0].style.display = 'none';
+//   } else {
+//     postElement.getElementsByClassName('starred')[0].style.display = 'none';
+//     postElement.getElementsByClassName('not-starred')[0].style.display = 'inline-block';
+//   }
+// }
 
 /**
  * Updates the number of stars displayed for a post.
  */
-function updateStarCount(postElement, nbStart) {
-  postElement.getElementsByClassName('star-count')[0].innerText = nbStart;
-}
+// function updateStarCount(postElement, nbStart) {
+//   postElement.getElementsByClassName('star-count')[0].innerText = nbStart;
+// }
 
 /**
  * Creates a comment element and adds it to the given postElement.
