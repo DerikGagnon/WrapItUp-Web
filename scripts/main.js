@@ -25,10 +25,10 @@ var signOutButton = document.getElementById('sign-out-button');
 var splashPage = document.getElementById('page-splash');
 var addPost = document.getElementById('add-post');
 var addButton = document.getElementById('add');
-var recentPostsSection = document.getElementById('recent-posts-list');
+//var recentPostsSection = document.getElementById('recent-posts-list');
 var userPostsSection = document.getElementById('user-posts-list');
 var topUserPostsSection = document.getElementById('top-user-posts-list');
-var recentMenuButton = document.getElementById('menu-recent');
+//var recentMenuButton = document.getElementById('menu-recent');
 var myPostsMenuButton = document.getElementById('menu-my-posts');
 var myTopPostsMenuButton = document.getElementById('menu-my-top-posts');
 var listeningFirebaseRefs = [];
@@ -267,7 +267,7 @@ function startDatabaseQueries() {
   var topUserPostsRef = firebase.database().ref('user-posts/' + myUserId).orderByChild('starCount');
   // [END my_top_posts_query]
   // [START recent_posts_query]
-  var recentPostsRef = firebase.database().ref('posts').limitToLast(100);
+  //var recentPostsRef = firebase.database().ref('posts').limitToLast(100);
   // [END recent_posts_query]
   var userPostsRef = firebase.database().ref('user-posts/' + myUserId);
 
@@ -296,12 +296,12 @@ function startDatabaseQueries() {
 
   // Fetching and displaying all posts of each sections.
   fetchPosts(topUserPostsRef, topUserPostsSection);
-  fetchPosts(recentPostsRef, recentPostsSection);
+  //fetchPosts(recentPostsRef, recentPostsSection);
   fetchPosts(userPostsRef, userPostsSection);
 
   // Keep track of all Firebase refs we are listening to.
   listeningFirebaseRefs.push(topUserPostsRef);
-  listeningFirebaseRefs.push(recentPostsRef);
+  //listeningFirebaseRefs.push(recentPostsRef);
   listeningFirebaseRefs.push(userPostsRef);
 }
 
@@ -324,7 +324,7 @@ function writeUserData(userId, name, email, imageUrl) {
 function cleanupUi() {
   // Remove all previously displayed posts.
   topUserPostsSection.getElementsByClassName('posts-container')[0].innerHTML = '';
-  recentPostsSection.getElementsByClassName('posts-container')[0].innerHTML = '';
+  //recentPostsSection.getElementsByClassName('posts-container')[0].innerHTML = '';
   userPostsSection.getElementsByClassName('posts-container')[0].innerHTML = '';
 
   // Stop all currently listening Firebase listeners.
@@ -384,11 +384,11 @@ function newPostForCurrentUser(title, text) {
  * Displays the given section element and changes styling of the given button.
  */
 function showSection(sectionElement, buttonElement) {
-  recentPostsSection.style.display = 'none';
+  //recentPostsSection.style.display = 'none';
   userPostsSection.style.display = 'none';
   topUserPostsSection.style.display = 'none';
   addPost.style.display = 'none';
-  recentMenuButton.classList.remove('is-active');
+  //recentMenuButton.classList.remove('is-active');
   myPostsMenuButton.classList.remove('is-active');
   myTopPostsMenuButton.classList.remove('is-active');
 
@@ -431,9 +431,9 @@ window.addEventListener('load', function() {
   };
 
   // Bind menu buttons.
-  recentMenuButton.onclick = function() {
-    showSection(recentPostsSection, recentMenuButton);
-  };
+  //recentMenuButton.onclick = function() {
+    //showSection(recentPostsSection, recentMenuButton);
+  //};
   myPostsMenuButton.onclick = function() {
     showSection(userPostsSection, myPostsMenuButton);
   };
@@ -445,5 +445,5 @@ window.addEventListener('load', function() {
     messageInput.value = '';
     titleInput.value = '';
   };
-  recentMenuButton.onclick();
+  //recentMenuButton.onclick();
 }, false);
