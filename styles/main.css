@@ -264,6 +264,14 @@ h3 {
     top: -10px;
     position: relative;
 }
+.post .delete-button {
+    height: 100%;
+    padding: 0 10px 0 5px;
+    padding-top: 10px;
+    display: inline-block;
+    top: -100px;
+    color: #EBEBEB;
+}
 .post .comments-container {
     padding: 15px 10px 0 10px;
 }
@@ -310,7 +318,7 @@ h3 {
     width: 100%;
     height: 100%;
     background-color: #0288D1;
-    background: radial-gradient(circle, #039BE5, #01579b);
+    background: radial-gradient(#546A87, #58595B);
     z-index: 10000;
     display: flex;
     justify-content: center;
