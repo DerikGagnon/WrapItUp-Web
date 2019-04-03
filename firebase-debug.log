@@ -1,0 +1,25 @@
+[debug] [2019-04-03T02:05:54.671Z] ----------------------------------------------------------------------
+[debug] [2019-04-03T02:05:54.674Z] Command:       /usr/local/Cellar/node/11.13.0/bin/node /usr/local/bin/firebase serve
+[debug] [2019-04-03T02:05:54.674Z] CLI Version:   6.5.0
+[debug] [2019-04-03T02:05:54.674Z] Platform:      darwin
+[debug] [2019-04-03T02:05:54.674Z] Node Version:  v11.13.0
+[debug] [2019-04-03T02:05:54.675Z] Time:          Tue Apr 02 2019 22:05:54 GMT-0400 (Eastern Daylight Time)
+[debug] [2019-04-03T02:05:54.675Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-04-03T02:05:54.684Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-04-03T02:05:54.684Z] > authorizing via signed-in user
+[debug] [2019-04-03T02:05:54.684Z] [iam] checking project wrap-it-up-payments for permissions ["firebase.projects.get"]
+[debug] [2019-04-03T02:05:54.686Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/wrap-it-up-payments:testIamPermissions  
+
+[debug] [2019-04-03T02:05:55.153Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-03T02:05:55.156Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/wrap-it-up-payments  
+ 
+[debug] [2019-04-03T02:05:55.404Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/derik/Downloads/quickstart-js-master/database'...
+[info] 
+[debug] [2019-04-03T02:05:55.406Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/144215120641/clients/_:getWebAppConfig  
+ 
+[debug] [2019-04-03T02:05:55.956Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: ./
+[info] ✔  hosting: Local server: http://localhost:5000
