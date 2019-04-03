@@ -27,10 +27,10 @@ var addPost = document.getElementById('add-post');
 var addButton = document.getElementById('add');
 //var recentPostsSection = document.getElementById('recent-posts-list');
 var userPostsSection = document.getElementById('user-posts-list');
-var topUserPostsSection = document.getElementById('top-user-posts-list');
+//var topUserPostsSection = document.getElementById('top-user-posts-list');
 //var recentMenuButton = document.getElementById('menu-recent');
 var myPostsMenuButton = document.getElementById('menu-my-posts');
-var myTopPostsMenuButton = document.getElementById('menu-my-top-posts');
+//var myTopPostsMenuButton = document.getElementById('menu-my-top-posts');
 var listeningFirebaseRefs = [];
 
 /**
@@ -105,9 +105,10 @@ function createPostElement(postId, title, text, author, authorId, authorPic) {
             '</div>' +
           '</div>' +
           '<span class="star">' +
-            '<div class="not-starred material-icons">star_border</div>' +
-            '<div class="starred material-icons">star</div>' +
-            '<div class="star-count">0</div>' +
+            '<div class="delete-button">Delete</div>' +
+            //'<div class="not-starred material-icons">star_border</div>' +
+            //'<div class="starred material-icons">star</div>' +
+            //'<div class="star-count">0</div>' +
           '</span>' +
           '<div class="text"></div>' +
           '<div class="comments-container"></div>' +
@@ -285,7 +286,7 @@ function startDatabaseQueries() {
       postElement.getElementsByClassName('mdl-card__title-text')[0].innerText = data.val().title;
       postElement.getElementsByClassName('username')[0].innerText = data.val().author;
       postElement.getElementsByClassName('text')[0].innerText = data.val().body;
-      postElement.getElementsByClassName('star-count')[0].innerText = data.val().starCount;
+      //postElement.getElementsByClassName('star-count')[0].innerText = data.val().starCount;
     });
     postsRef.on('child_removed', function(data) {
       var containerElement = sectionElement.getElementsByClassName('posts-container')[0];
@@ -295,7 +296,7 @@ function startDatabaseQueries() {
   };
 
   // Fetching and displaying all posts of each sections.
-  fetchPosts(topUserPostsRef, topUserPostsSection);
+  //fetchPosts(topUserPostsRef, topUserPostsSection);
   //fetchPosts(recentPostsRef, recentPostsSection);
   fetchPosts(userPostsRef, userPostsSection);
 
@@ -323,7 +324,7 @@ function writeUserData(userId, name, email, imageUrl) {
  */
 function cleanupUi() {
   // Remove all previously displayed posts.
-  topUserPostsSection.getElementsByClassName('posts-container')[0].innerHTML = '';
+  //topUserPostsSection.getElementsByClassName('posts-container')[0].innerHTML = '';
   //recentPostsSection.getElementsByClassName('posts-container')[0].innerHTML = '';
   userPostsSection.getElementsByClassName('posts-container')[0].innerHTML = '';
 
@@ -386,11 +387,11 @@ function newPostForCurrentUser(title, text) {
 function showSection(sectionElement, buttonElement) {
   //recentPostsSection.style.display = 'none';
   userPostsSection.style.display = 'none';
-  topUserPostsSection.style.display = 'none';
+  //topUserPostsSection.style.display = 'none';
   addPost.style.display = 'none';
   //recentMenuButton.classList.remove('is-active');
   myPostsMenuButton.classList.remove('is-active');
-  myTopPostsMenuButton.classList.remove('is-active');
+  //myTopPostsMenuButton.classList.remove('is-active');
 
   if (sectionElement) {
     sectionElement.style.display = 'block';
@@ -437,13 +438,14 @@ window.addEventListener('load', function() {
   myPostsMenuButton.onclick = function() {
     showSection(userPostsSection, myPostsMenuButton);
   };
-  myTopPostsMenuButton.onclick = function() {
-    showSection(topUserPostsSection, myTopPostsMenuButton);
-  };
+  //myTopPostsMenuButton.onclick = function() {
+    //showSection(topUserPostsSection, myTopPostsMenuButton);
+  //};
   addButton.onclick = function() {
     showSection(addPost);
     messageInput.value = '';
     titleInput.value = '';
   };
+    myPostsMenuButton.onclick();
   //recentMenuButton.onclick();
 }, false);

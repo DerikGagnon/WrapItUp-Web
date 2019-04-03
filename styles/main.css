@@ -31,7 +31,7 @@ a {
     display: block;
 }
 h3 {
-    background: url('../media/firebase-logo.png') no-repeat;
+    background: url('../media/logo.png') no-repeat;
     background-size: 40px;
     padding-left: 50px;
     background-position-y: -2px;
@@ -65,12 +65,14 @@ h3 {
 .logo {
     font-family: 'Amaranth', sans-serif;
 }
+/*
 .logo .material-icons {
     top: 4px;
     font-size: 32px;
     margin-right: -2px;
     position: relative;
 }
+ */
 .header .mdl-layout__header-row {
     max-width: 1024px;
     width: 100%;
