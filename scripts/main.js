@@ -17,9 +17,12 @@
 
 
 // Shortcuts to DOM Elements.
-var messageForm = document.getElementById('message-form');
-var messageInput = document.getElementById('new-post-message');
-var titleInput = document.getElementById('new-post-title');
+var messageForm = document.getElementById('item-form');
+var descriptionInput = document.getElementById('new-item-description');
+var nameInput = document.getElementById('new-item-name');
+var priceInput = document.getElementById('new-item-price');
+var typeInput = document.getElementById('new-item-type');
+var allergiesInput = document.getElementById('new-item-allergies');
 var signInButton = document.getElementById('sign-in-button');
 var signOutButton = document.getElementById('sign-out-button');
 var splashPage = document.getElementById('page-splash');
@@ -31,22 +34,23 @@ var listeningFirebaseRefs = [];
 
 /**
  * Saves a new post to the Firebase DB.
+ * writeNewMenuItem(firebase.auth().currentUser.uid, *firebase.auth().currentUser.photoURL,* name, price, type, allergies, description);
  */
 // [START write_fan_out]
-function writeNewMenuItem(uid, picture, title, description, price, type, allergies) {
+function writeNewMenuItem(uid, name, price, type, allergies, description) {
   // A post entry.
   var itemData = {
     uid: uid,
+    name: name,
     description: description,
-    title: title,
     price: price,
-    itemPicture: picture,
+    /*itemPicture: picture,*/
     itemType: type,
     itemAllergies: allergies
   };
 
-  // Get a key for a new Post.
-  var newItemKey = firebase.database().ref().child('posts').push().key;
+  // Get a key for a new Item.
+  var newItemKey = firebase.database().ref().child('items').push().key;
 
   // Write the new post's data simultaneously in the posts list and the user's post list.
   var updates = {};
@@ -61,7 +65,7 @@ function writeNewMenuItem(uid, picture, title, description, price, type, allergi
  */
 
  /*  -------------------------------------------------------------------- ITEM CREATION ---------------------------------------------------------------- */
-function createPostElement(itemId, title, text, authorPic) {
+function createPostElement(itemId, name, price, type, allergies, description) {
   var uid = firebase.auth().currentUser.uid;
 
   var html =
@@ -110,7 +114,7 @@ function startDatabaseQueries() {
     itemsRef.on('child_added', function(data) {
       var containerElement = sectionElement.getElementsByClassName('posts-container')[0];
       containerElement.insertBefore(
-        createPostElement(data.key, data.val().title, data.val().body, author, data.val().uid, data.val().authorPic),
+        createPostElement(data.key, data.val().name, data.val().price, data.val().itemType, data.val().itemAllergies, data.val().description),
         containerElement.firstChild);
     });
     itemsRef.on('child_changed', function(data) {
@@ -179,15 +183,16 @@ function onAuthStateChanged(user) {
 
 /**
  * Creates a new post for the current user.
+ * newMenuItem(name, price, type, allergies, description)
  */
-function newMenuItem(title, text) {
+function newMenuItem(name, price, type, allergies, description) {
   // [START single_value_read]
   var userId = firebase.auth().currentUser.uid;
   return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
     // [START_EXCLUDE]
     return writeNewMenuItem(firebase.auth().currentUser.uid,
-      firebase.auth().currentUser.photoURL,
-      title, text);
+      /*firebase.auth().currentUser.photoURL,*/
+      name, price, type, allergies, description);
     // [END_EXCLUDE]
   });
   // [END single_value_read]
@@ -228,20 +233,29 @@ window.addEventListener('load', function() {
   //Saves message on form submit.
   messageForm.onsubmit = function(e) {
     e.preventDefault();
-    var text = messageInput.value;
-    var title = titleInput.value;
-    if (text && title) {
-      newMenuItem(title, text).then(function() {
+    var description = descriptionInput.value;
+    var name = nameInput.value;
+    var price = priceInput.value;
+    var type = typeInput.value;
+    var allergies = allergiesInput.value;
+    if (description && name && price && type && allergies) {
+      newMenuItem(name, price, type, allergies, description).then(function() {
         myItemsMenuButton.click();
       });
-      messageInput.value = '';
-      titleInput.value = '';
+      descriptionInput.value = '';
+      nameInput.value = '';
+      priceInput.value = '';
+      typeInput.value = '';
+      allergiesInput.value = '';
     }
   };
 
   addButton.onclick = function() {
     showSection(addPost);
-    messageInput.value = '';
-    titleInput.value = '';
+    descriptionInput.value = '';
+    nameInput.value = '';
+    priceInput.value = '';
+    typeInput.value = '';
+    allergiesInput.value = '';
   };
 }, false);
