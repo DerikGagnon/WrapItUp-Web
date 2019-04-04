@@ -1,54 +1,29 @@
-[debug] [2019-04-04T03:05:13.675Z] ----------------------------------------------------------------------
-[debug] [2019-04-04T03:05:13.677Z] Command:       /usr/local/Cellar/node/11.13.0/bin/node /usr/local/bin/firebase serve
-[debug] [2019-04-04T03:05:13.677Z] CLI Version:   6.5.2
-[debug] [2019-04-04T03:05:13.677Z] Platform:      darwin
-[debug] [2019-04-04T03:05:13.677Z] Node Version:  v11.13.0
-[debug] [2019-04-04T03:05:13.678Z] Time:          Wed Apr 03 2019 23:05:13 GMT-0400 (Eastern Daylight Time)
-[debug] [2019-04-04T03:05:13.679Z] ----------------------------------------------------------------------
+[debug] [2019-04-04T18:07:23.541Z] ----------------------------------------------------------------------
+[debug] [2019-04-04T18:07:23.544Z] Command:       /usr/local/Cellar/node/11.13.0/bin/node /usr/local/bin/firebase serve
+[debug] [2019-04-04T18:07:23.544Z] CLI Version:   6.5.1
+[debug] [2019-04-04T18:07:23.544Z] Platform:      darwin
+[debug] [2019-04-04T18:07:23.544Z] Node Version:  v11.13.0
+[debug] [2019-04-04T18:07:23.552Z] Time:          Thu Apr 04 2019 14:07:23 GMT-0400 (Eastern Daylight Time)
+[debug] [2019-04-04T18:07:23.552Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2019-04-04T03:05:13.690Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2019-04-04T03:05:13.690Z] > authorizing via signed-in user
-[debug] [2019-04-04T03:05:13.690Z] [iam] checking project wrap-it-up-payments for permissions ["firebase.projects.get"]
-[debug] [2019-04-04T03:05:13.692Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/wrap-it-up-payments:testIamPermissions  
-
-[debug] [2019-04-04T03:05:13.970Z] <<< HTTP RESPONSE 200
-[debug] [2019-04-04T03:05:13.972Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/wrap-it-up-payments  
- 
-[debug] [2019-04-04T03:05:14.217Z] <<< HTTP RESPONSE 200
-[info] 
-[info] === Serving from '/Users/derik/Documents/Capstone/WrapItUp-Web'...
-[info] 
-[debug] [2019-04-04T03:05:14.220Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/144215120641/clients/_:getWebAppConfig  
- 
-[debug] [2019-04-04T03:05:14.481Z] <<< HTTP RESPONSE 200
-[info] i  hosting: Serving hosting files from: ./
-[info] ✔  hosting: Local server: http://localhost:5000
-[debug] [2019-04-04T15:32:30.309Z] ----------------------------------------------------------------------
-[debug] [2019-04-04T15:32:30.311Z] Command:       /usr/local/Cellar/node/11.13.0/bin/node /usr/local/bin/firebase serve
-[debug] [2019-04-04T15:32:30.312Z] CLI Version:   6.5.2
-[debug] [2019-04-04T15:32:30.312Z] Platform:      darwin
-[debug] [2019-04-04T15:32:30.312Z] Node Version:  v11.13.0
-[debug] [2019-04-04T15:32:30.318Z] Time:          Thu Apr 04 2019 11:32:30 GMT-0400 (Eastern Daylight Time)
-[debug] [2019-04-04T15:32:30.318Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2019-04-04T15:32:30.331Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2019-04-04T15:32:30.332Z] > authorizing via signed-in user
-[debug] [2019-04-04T15:32:30.332Z] [iam] checking project wrap-it-up-payments for permissions ["firebase.projects.get"]
-[debug] [2019-04-04T15:32:30.334Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2019-04-04T15:32:30.334Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+[debug] [2019-04-04T18:07:23.573Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-04-04T18:07:23.574Z] > authorizing via signed-in user
+[debug] [2019-04-04T18:07:23.574Z] [iam] checking project wrap-it-up-payments for permissions ["firebase.projects.get"]
+[debug] [2019-04-04T18:07:23.576Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-04-04T18:07:23.576Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
  <request body omitted>
-[debug] [2019-04-04T15:32:30.527Z] <<< HTTP RESPONSE 200
-[debug] [2019-04-04T15:32:30.551Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/wrap-it-up-payments:testIamPermissions  
+[debug] [2019-04-04T18:07:23.791Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-04T18:07:23.800Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/wrap-it-up-payments:testIamPermissions  
 
-[debug] [2019-04-04T15:32:30.881Z] <<< HTTP RESPONSE 200
-[debug] [2019-04-04T15:32:30.882Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/wrap-it-up-payments  
+[debug] [2019-04-04T18:07:24.111Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-04T18:07:24.113Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/wrap-it-up-payments  
  
-[debug] [2019-04-04T15:32:31.145Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-04T18:07:24.408Z] <<< HTTP RESPONSE 200
 [info] 
-[info] === Serving from '/Users/derik/Documents/Capstone/WrapItUp-Web'...
+[info] === Serving from '/Users/lukas/Documents/GitHub/WrapItUp-Web'...
 [info] 
-[debug] [2019-04-04T15:32:31.147Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/144215120641/clients/_:getWebAppConfig  
+[debug] [2019-04-04T18:07:24.411Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/144215120641/clients/_:getWebAppConfig  
  
-[debug] [2019-04-04T15:32:31.717Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-04T18:07:24.818Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: ./
 [info] ✔  hosting: Local server: http://localhost:5000
