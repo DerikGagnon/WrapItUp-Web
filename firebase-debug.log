@@ -23,3 +23,32 @@
 [debug] [2019-04-03T18:10:30.958Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: ./
 [info] ✔  hosting: Local server: http://localhost:5000
+[debug] [2019-04-03T20:42:50.002Z] ----------------------------------------------------------------------
+[debug] [2019-04-03T20:42:50.005Z] Command:       /usr/local/Cellar/node/11.13.0/bin/node /usr/local/bin/firebase serve
+[debug] [2019-04-03T20:42:50.005Z] CLI Version:   6.5.0
+[debug] [2019-04-03T20:42:50.005Z] Platform:      darwin
+[debug] [2019-04-03T20:42:50.005Z] Node Version:  v11.13.0
+[debug] [2019-04-03T20:42:50.011Z] Time:          Wed Apr 03 2019 16:42:50 GMT-0400 (Eastern Daylight Time)
+[debug] [2019-04-03T20:42:50.011Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-04-03T20:42:50.025Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-04-03T20:42:50.026Z] > authorizing via signed-in user
+[debug] [2019-04-03T20:42:50.026Z] [iam] checking project wrap-it-up-payments for permissions ["firebase.projects.get"]
+[debug] [2019-04-03T20:42:50.028Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-04-03T20:42:50.028Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-04-03T20:42:50.247Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-03T20:42:50.267Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/wrap-it-up-payments:testIamPermissions  
+
+[debug] [2019-04-03T20:42:50.525Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-03T20:42:50.526Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/wrap-it-up-payments  
+ 
+[debug] [2019-04-03T20:42:50.772Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/derik/Documents/Capstone/WrapItUp-Web'...
+[info] 
+[debug] [2019-04-03T20:42:50.774Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/144215120641/clients/_:getWebAppConfig  
+ 
+[debug] [2019-04-03T20:42:50.994Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: ./
+[info] ✔  hosting: Local server: http://localhost:5000
