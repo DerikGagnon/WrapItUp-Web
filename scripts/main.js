@@ -97,8 +97,8 @@ function createPostElement(itemId, name, price, type, allergies, description) {
   }
 
   // Set values.
-  postElement.getElementsByClassName('text')[0].innerText = text;
-  postElement.getElementsByClassName('mdl-card__title-text')[0].innerText = title;
+  postElement.getElementsByClassName('text')[0].innerText = price;
+  postElement.getElementsByClassName('mdl-card__title-text')[0].innerText = name;
 
   return postElement;
 }
@@ -108,7 +108,7 @@ function createPostElement(itemId, name, price, type, allergies, description) {
  */
 function startDatabaseQueries() {
   var myUserId = firebase.auth().currentUser.uid;
-  var userItems = firebase.database().ref('user-posts/' + myUserId).orderByChild('title');
+  var userItems = firebase.database().ref('user-items/' + myUserId).orderByChild('title');
 
   var fetchItems = function(itemsRef, sectionElement) {
     itemsRef.on('child_added', function(data) {
