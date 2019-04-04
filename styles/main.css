@@ -48,7 +48,7 @@ h3 {
 /* Overrides MDL colors */
 .mdl-layout.is-upgraded .mdl-layout__tab.is-active::after,
 .header .mdl-textfield__label:after {
-    background-color: #FFCA28;
+    background-color: #EBEBEB;
 }
 .mdl-snackbar__action {
     color: #FFCA28;
@@ -189,7 +189,8 @@ h3 {
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link.is-active,
 .is-active .mdl-menu__item {
     color: black;
-    background-color: #EBEBEB;
+    background-color: green;
+    /*background-color: #EBEBEB;*/
 }
 .mdl-layout__drawer {
     border-right-width: 0;
@@ -264,6 +265,12 @@ h3 {
     top: -10px;
     position: relative;
 }
+.post .delete-button {
+    height: 100%;
+    padding: 0 10px 0 5px;
+    display: inline-block;
+    color: #EBEBEB;
+}
 .post .comments-container {
     padding: 15px 10px 0 10px;
 }
@@ -302,7 +309,10 @@ h3 {
 }
 
 /* Splash Page */
-
+.main-splash {
+    height: 450px;
+    width: 450px;
+}
 #page-splash {
     position: fixed;
     top: 0;
@@ -310,11 +320,24 @@ h3 {
     width: 100%;
     height: 100%;
     background-color: #0288D1;
-    background: radial-gradient(circle, #039BE5, #01579b);
+    background: radial-gradient(#798DA3, #546A87);
     z-index: 10000;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     flex-direction: column;
+}
+
+/*Colors*/
+.main-color{
+    background-color: #546A87;
+}
+
+.alt-color{
+    background-color: #798DA3;
+}
+
+.text-color{
+    color: #EBEBEB !important;
 }
