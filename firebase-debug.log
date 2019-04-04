@@ -1,54 +1,25 @@
-[debug] [2019-04-03T21:30:51.845Z] ----------------------------------------------------------------------
-[debug] [2019-04-03T21:30:51.847Z] Command:       /usr/local/Cellar/node/11.13.0/bin/node /usr/local/bin/firebase serve
-[debug] [2019-04-03T21:30:51.847Z] CLI Version:   6.5.1
-[debug] [2019-04-03T21:30:51.848Z] Platform:      darwin
-[debug] [2019-04-03T21:30:51.848Z] Node Version:  v11.13.0
-[debug] [2019-04-03T21:30:51.848Z] Time:          Wed Apr 03 2019 17:30:51 GMT-0400 (Eastern Daylight Time)
-[debug] [2019-04-03T21:30:51.848Z] ----------------------------------------------------------------------
+[debug] [2019-04-04T03:05:13.675Z] ----------------------------------------------------------------------
+[debug] [2019-04-04T03:05:13.677Z] Command:       /usr/local/Cellar/node/11.13.0/bin/node /usr/local/bin/firebase serve
+[debug] [2019-04-04T03:05:13.677Z] CLI Version:   6.5.2
+[debug] [2019-04-04T03:05:13.677Z] Platform:      darwin
+[debug] [2019-04-04T03:05:13.677Z] Node Version:  v11.13.0
+[debug] [2019-04-04T03:05:13.678Z] Time:          Wed Apr 03 2019 23:05:13 GMT-0400 (Eastern Daylight Time)
+[debug] [2019-04-04T03:05:13.679Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2019-04-03T21:30:51.860Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2019-04-03T21:30:51.860Z] > authorizing via signed-in user
-[debug] [2019-04-03T21:30:51.861Z] [iam] checking project wrap-it-up-payments for permissions ["firebase.projects.get"]
-[debug] [2019-04-03T21:30:51.862Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/wrap-it-up-payments:testIamPermissions  
+[debug] [2019-04-04T03:05:13.690Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-04-04T03:05:13.690Z] > authorizing via signed-in user
+[debug] [2019-04-04T03:05:13.690Z] [iam] checking project wrap-it-up-payments for permissions ["firebase.projects.get"]
+[debug] [2019-04-04T03:05:13.692Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/wrap-it-up-payments:testIamPermissions  
 
-[debug] [2019-04-03T21:30:52.207Z] <<< HTTP RESPONSE 200
-[debug] [2019-04-03T21:30:52.209Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/wrap-it-up-payments  
+[debug] [2019-04-04T03:05:13.970Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-04T03:05:13.972Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/wrap-it-up-payments  
  
-[debug] [2019-04-03T21:30:52.510Z] <<< HTTP RESPONSE 200
-[info] 
-[info] === Serving from '/Users/lukas/Documents/GitHub/WrapItUp-Web'...
-[info] 
-[debug] [2019-04-03T21:30:52.513Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/144215120641/clients/_:getWebAppConfig  
- 
-[debug] [2019-04-03T21:30:52.741Z] <<< HTTP RESPONSE 200
-[info] i  hosting: Serving hosting files from: ./
-[info] ✔  hosting: Local server: http://localhost:5000
-[debug] [2019-04-03T20:42:50.002Z] ----------------------------------------------------------------------
-[debug] [2019-04-03T20:42:50.005Z] Command:       /usr/local/Cellar/node/11.13.0/bin/node /usr/local/bin/firebase serve
-[debug] [2019-04-03T20:42:50.005Z] CLI Version:   6.5.0
-[debug] [2019-04-03T20:42:50.005Z] Platform:      darwin
-[debug] [2019-04-03T20:42:50.005Z] Node Version:  v11.13.0
-[debug] [2019-04-03T20:42:50.011Z] Time:          Wed Apr 03 2019 16:42:50 GMT-0400 (Eastern Daylight Time)
-[debug] [2019-04-03T20:42:50.011Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2019-04-03T20:42:50.025Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2019-04-03T20:42:50.026Z] > authorizing via signed-in user
-[debug] [2019-04-03T20:42:50.026Z] [iam] checking project wrap-it-up-payments for permissions ["firebase.projects.get"]
-[debug] [2019-04-03T20:42:50.028Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2019-04-03T20:42:50.028Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- <request body omitted>
-[debug] [2019-04-03T20:42:50.247Z] <<< HTTP RESPONSE 200
-[debug] [2019-04-03T20:42:50.267Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/wrap-it-up-payments:testIamPermissions  
-
-[debug] [2019-04-03T20:42:50.525Z] <<< HTTP RESPONSE 200
-[debug] [2019-04-03T20:42:50.526Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/wrap-it-up-payments  
- 
-[debug] [2019-04-03T20:42:50.772Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-04T03:05:14.217Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/Users/derik/Documents/Capstone/WrapItUp-Web'...
 [info] 
-[debug] [2019-04-03T20:42:50.774Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/144215120641/clients/_:getWebAppConfig  
+[debug] [2019-04-04T03:05:14.220Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/144215120641/clients/_:getWebAppConfig  
  
-[debug] [2019-04-03T20:42:50.994Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-04T03:05:14.481Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: ./
 [info] ✔  hosting: Local server: http://localhost:5000
