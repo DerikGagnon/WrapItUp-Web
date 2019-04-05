@@ -68,7 +68,7 @@ function createItemElement(itemId, name, price, type, allergies, description) {
   var uid = firebase.auth().currentUser.uid;
 
   var html =
-      '<div class="item -' + itemId + ' mdl-cell mdl-cell--12-col ' +
+      '<div class="item item-' + itemId + ' mdl-cell mdl-cell--12-col ' +
                   'mdl-cell--6-col-tablet mdl-cell--4-col-desktop mdl-grid mdl-grid--no-spacing">' +
         '<div class="mdl-card mdl-shadow--2dp">' +
           '<div class="mdl-card__title mdl-color-text--white main-color">' +
@@ -123,7 +123,7 @@ function startDatabaseQueries() {
     });
     itemsRef.on('child_changed', function(data) {
       var containerElement = sectionElement.getElementsByClassName('items-container')[0];
-      var itemElement = containerElement.getElementsByClassName('-' + data.key)[0];
+      var itemElement = containerElement.getElementsByClassName('item-' + data.key)[0];
       itemElement.getElementsByClassName('price')[0].innerText = price;
       itemElement.getElementsByClassName('type')[0].innerText = type;
       itemElement.getElementsByClassName('allergies')[0].innerText = allergies;
@@ -132,7 +132,7 @@ function startDatabaseQueries() {
     });
     itemsRef.on('child_removed', function(data) {
       var containerElement = sectionElement.getElementsByClassName('items-container')[0];
-      var item = containerElement.getElementsByClassName('-' + data.key)[0];
+      var item = containerElement.getElementsByClassName('item-' + data.key)[0];
       item.parentElement.removeChild(post);
     });
   };
@@ -254,6 +254,10 @@ window.addEventListener('load', function() {
       typeInput.value = '';
       allergiesInput.value = '';
     }
+  };
+
+  myItemsMenuButton.onclick = function() {
+    showSection(userItemsSection, myItemsMenuButton);
   };
 
   addButton.onclick = function() {
