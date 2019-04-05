@@ -93,9 +93,11 @@ function createItemElement(itemId, name, price, type, allergies, description) {
   var div = document.createElement('div');
   div.innerHTML = html;
   var itemElement = div.firstChild;
-  if (componentHandler) {
-    componentHandler.upgradeElements(itemElement.getElementsByClassName('mdl-textfield')[0]);
-  }
+  console.log(div.firstChild)
+  console.log(itemElement.getElementsByClassName('item')[0])
+  // if (componentHandler) {
+  //   componentHandler.upgradeElements(itemElement.getElementsByClassName('item-' + itemId)[0]);
+  // }
 
   // Set values.
   itemElement.getElementsByClassName('price')[0].innerText = price;
