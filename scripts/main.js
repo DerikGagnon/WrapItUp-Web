@@ -74,11 +74,11 @@ function createItemElement(itemId, name, price, type, allergies, description) {
           '<div class="mdl-card__title mdl-color-text--white main-color">' +
             '<h4 class="mdl-card__title-text"></h4>' +
           '</div>' +
-          // '<div class="header">' +
-          //   '<div>' +
-          //     '<div class="itemname mdl-color-text--black"></div>' +
-          //   '</div>' +
-          // '</div>' +
+          '<div class="header">' +
+            '<div>' +
+              '<div class="itemname mdl-color-text--black"></div>' +
+            '</div>' +
+          '</div>' +
           '<span class="star">' +
             '<button class="mdl-button delete-button"><div>Delete</div></button>' +
           '</span>' +
@@ -117,6 +117,12 @@ function startDatabaseQueries() {
   var fetchItems = function(itemsRef, sectionElement) {
     itemsRef.on('child_added', function(data) {
       var containerElement = sectionElement.getElementsByClassName('items-container')[0];
+      console.log(data.key);
+      console.log(data.val().name);
+      console.log(data.val().price);
+      console.log(data.val().itemType);
+      console.log(data.val().itemAllergies);
+      console.log(data.val().description);
       containerElement.insertBefore(
         createItemElement(data.key, data.val().name, data.val().price, data.val().itemType, data.val().itemAllergies, data.val().description),
         containerElement.firstChild);
