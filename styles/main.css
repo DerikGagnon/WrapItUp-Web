@@ -114,7 +114,7 @@ h3 {
     margin-right: 10px;
     background-image: url('../media/silhouette.jpg');
 }
-.username {
+.itemname {
     display: inline-block;
     line-height: 38px;
     vertical-align: top;
@@ -210,7 +210,7 @@ h3 {
     }
 }
 
-/* New Post Page */
+/* New item Page */
 
 #page-add {
     display: block;
@@ -244,20 +244,20 @@ h3 {
     line-height: 25px;
 }
 
-/* Post */
+/* item */
 
-.post .mdl-card {
+.item .mdl-card {
     height: 100%;
     top: 0;
     left: 0;
     min-height: 0;
 }
-.post .header {
+.item .header {
     padding: 10px;
     width: calc(100% - 100px);
     display: inline-block;
 }
-.post .star-count {
+.item .star-count {
     color: #444;
     padding: 0 10px 0 5px;
     font-weight: bold;
@@ -265,46 +265,46 @@ h3 {
     top: -10px;
     position: relative;
 }
-.post .delete-button {
+.item .delete-button {
     height: 100%;
     padding: 0 10px 0 5px;
     display: inline-block;
     color: #EBEBEB;
 }
-.post .comments-container {
+.item .comments-container {
     padding: 15px 10px 0 10px;
 }
-.post .text {
+.item .text {
     padding: 0 10px;
     color: grey;
 }
-.post .comments-container .text {
+.item .comments-container .text {
     margin-left: 5px;
     color: #444;
     transition: all 0.2s;
 }
-.post .add-comment{
+.item .add-comment{
     flex-grow: 1;
     padding: 0 10px;
     margin-bottom: -10px;
 }
-.post .add-comment.mdl-textfield {
+.item .add-comment.mdl-textfield {
     width: 100%;
 }
-.post .star {
+.item .star {
     position: absolute;
     top: 10px;
     right: 0;
 }
-.post .star .material-icons {
+.item .star .material-icons {
     font-size: 35px;
     color: #ffcb0c;
     cursor: pointer;
 }
-.post .star .material-icons:HOVER {
+.item .star .material-icons:HOVER {
     opacity: 0.6;
 }
-.post .star .starred {
+.item .star .starred {
     display: none;
 }
 

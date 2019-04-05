@@ -40,7 +40,6 @@ var listeningFirebaseRefs = [];
 function writeNewMenuItem(uid, name, price, type, allergies, description) {
   // A post entry.
   var itemData = {
-    uid: uid,
     name: name,
     description: description,
     price: price,
@@ -55,7 +54,7 @@ function writeNewMenuItem(uid, name, price, type, allergies, description) {
   // Write the new post's data simultaneously in the posts list and the user's post list.
   var updates = {};
   // updates['/posts/' + newItemKey] = itemData;
-  updates['/user-posts/' + uid + '/' + newItemKey] = itemData;
+  updates['/user-items/' + uid + '/' + newItemKey] = itemData;
 
   return firebase.database().ref().update(updates);
 }
@@ -65,42 +64,47 @@ function writeNewMenuItem(uid, name, price, type, allergies, description) {
  */
 
  /*  -------------------------------------------------------------------- ITEM CREATION ---------------------------------------------------------------- */
-function createPostElement(itemId, name, price, type, allergies, description) {
+function createItemElement(itemId, name, price, type, allergies, description) {
   var uid = firebase.auth().currentUser.uid;
 
   var html =
-      '<div class="post post-' + itemId + ' mdl-cell mdl-cell--12-col ' +
+      '<div class="item -' + itemId + ' mdl-cell mdl-cell--12-col ' +
                   'mdl-cell--6-col-tablet mdl-cell--4-col-desktop mdl-grid mdl-grid--no-spacing">' +
         '<div class="mdl-card mdl-shadow--2dp">' +
           '<div class="mdl-card__title mdl-color-text--white main-color">' +
             '<h4 class="mdl-card__title-text"></h4>' +
           '</div>' +
-          '<div class="header">' +
-            '<div>' +
-              '<div class="avatar"></div>' +
-              '<div class="username mdl-color-text--black"></div>' +
-            '</div>' +
-          '</div>' +
+          // '<div class="header">' +
+          //   '<div>' +
+          //     '<div class="itemname mdl-color-text--black"></div>' +
+          //   '</div>' +
+          // '</div>' +
           '<span class="star">' +
             '<button class="mdl-button delete-button"><div>Delete</div></button>' +
           '</span>' +
-          '<div class="text"></div>' +
+          '<div class="price"></div>' +
+          '<div class="type"></div>' +
+          '<div class="allergies"></div>' +
+          '<div class="description"></div>' +
         '</div>' +
       '</div>';
 
   // Create the DOM element from the HTML.
   var div = document.createElement('div');
   div.innerHTML = html;
-  var postElement = div.firstChild;
+  var itemElement = div.firstChild;
   if (componentHandler) {
-    componentHandler.upgradeElements(postElement.getElementsByClassName('mdl-textfield')[0]);
+    componentHandler.upgradeElements(itemElement.getElementsByClassName('mdl-textfield')[0]);
   }
 
   // Set values.
-  postElement.getElementsByClassName('text')[0].innerText = price;
-  postElement.getElementsByClassName('mdl-card__title-text')[0].innerText = name;
+  itemElement.getElementsByClassName('price')[0].innerText = price;
+  itemElement.getElementsByClassName('type')[0].innerText = type;
+  itemElement.getElementsByClassName('allergies')[0].innerText = allergies;
+  itemElement.getElementsByClassName('description')[0].innerText = description;
+  itemElement.getElementsByClassName('mdl-card__title-text')[0].innerText = name;
 
-  return postElement;
+  return itemElement;
 }
 
 /**
@@ -112,22 +116,24 @@ function startDatabaseQueries() {
 
   var fetchItems = function(itemsRef, sectionElement) {
     itemsRef.on('child_added', function(data) {
-      var containerElement = sectionElement.getElementsByClassName('posts-container')[0];
+      var containerElement = sectionElement.getElementsByClassName('items-container')[0];
       containerElement.insertBefore(
-        createPostElement(data.key, data.val().name, data.val().price, data.val().itemType, data.val().itemAllergies, data.val().description),
+        createItemElement(data.key, data.val().name, data.val().price, data.val().itemType, data.val().itemAllergies, data.val().description),
         containerElement.firstChild);
     });
     itemsRef.on('child_changed', function(data) {
-      var containerElement = sectionElement.getElementsByClassName('posts-container')[0];
-      var postElement = containerElement.getElementsByClassName('post-' + data.key)[0];
-      postElement.getElementsByClassName('mdl-card__title-text')[0].innerText = data.val().title;
-      postElement.getElementsByClassName('username')[0].innerText = data.val().author;
-      postElement.getElementsByClassName('text')[0].innerText = data.val().body;
+      var containerElement = sectionElement.getElementsByClassName('items-container')[0];
+      var itemElement = containerElement.getElementsByClassName('-' + data.key)[0];
+      itemElement.getElementsByClassName('price')[0].innerText = price;
+      itemElement.getElementsByClassName('type')[0].innerText = type;
+      itemElement.getElementsByClassName('allergies')[0].innerText = allergies;
+      itemElement.getElementsByClassName('description')[0].innerText = description;
+      itemElement.getElementsByClassName('mdl-card__title-text')[0].innerText = name;
     });
     itemsRef.on('child_removed', function(data) {
-      var containerElement = sectionElement.getElementsByClassName('posts-container')[0];
-      var post = containerElement.getElementsByClassName('post-' + data.key)[0];
-      post.parentElement.removeChild(post);
+      var containerElement = sectionElement.getElementsByClassName('items-container')[0];
+      var item = containerElement.getElementsByClassName('-' + data.key)[0];
+      item.parentElement.removeChild(post);
     });
   };
 
@@ -143,7 +149,7 @@ function startDatabaseQueries() {
  */
 function cleanupUi() {
   // Remove all previously displayed posts.
-  userItemsSection.getElementsByClassName('posts-container')[0].innerHTML = '';
+  userItemsSection.getElementsByClassName('items-container')[0].innerHTML = '';
 
   // Stop all currently listening Firebase listeners.
   listeningFirebaseRefs.forEach(function(ref) {
