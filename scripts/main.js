@@ -252,6 +252,7 @@ window.addEventListener('load', function() {
     var price = priceInput.value;
     var type = typeInput.value;
     var allergies = allergiesInput.value;
+    //add image var
     if (description && name && price && type && allergies) {
       newMenuItem(name, price, type, allergies, description).then(function() {
         myItemsMenuButton.click();

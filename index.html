@@ -141,8 +141,13 @@
                   <label class="mdl-textfield__label" for="new-item-price">Item Price:</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="new-item-type">
-                  <label class="mdl-textfield__label" for="new-item-type">Item Type:</label>
+                  <!--<input class="mdl-textfield__input" type="text" id="new-item-type">-->
+                  <!--<label class="mdl-textfield__label" for="new-item-type">Item Type:</label>-->
+                  <select class="mdl-textfield__input" type="text" id="new-item-type">
+                      <option value="Entree">Entree</option>
+                      <option value="Drinks">Drinks</option>
+                      <option value="Appetizers">Appetizers</option>
+                  </select>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <input class="mdl-textfield__input" type="text" id="new-item-allergies">
@@ -151,6 +156,9 @@
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <textarea class="mdl-textfield__input" rows="3" id="new-item-description"></textarea>
                   <label class="mdl-textfield__label" for="new-item-description">Item Description:</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="filesubmit">
+                    <input type="file" class="file-select" accept="image/*"/>
                 </div>
                 <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
                   Add item
