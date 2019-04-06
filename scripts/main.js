@@ -82,10 +82,10 @@ function createItemElement(itemId, name, price, type, allergies, description) {
           '<span class="star">' +
             '<button class="mdl-button delete-button"><div>Delete</div></button>' +
           '</span>' +
-          '<div class="price"></div>' +
-          '<div class="type"></div>' +
-          '<div class="allergies"></div>' +
-          '<div class="description"></div>' +
+          '<div class="price item text"></div>' +
+          '<div class="type item text"></div>' +
+          '<div class="allergies item text"></div>' +
+          '<div class="description item text"></div>' +
         '</div>' +
       '</div>';
 
@@ -93,8 +93,8 @@ function createItemElement(itemId, name, price, type, allergies, description) {
   var div = document.createElement('div');
   div.innerHTML = html;
   var itemElement = div.firstChild;
-  console.log(div.firstChild)
-  console.log(itemElement.getElementsByClassName('item')[0])
+  // console.log(div.firstChild)
+  // console.log(itemElement.getElementsByClassName('item')[0])
   // if (componentHandler) {
   //   componentHandler.upgradeElements(itemElement.getElementsByClassName('item-' + itemId)[0]);
   // }
@@ -276,4 +276,5 @@ window.addEventListener('load', function() {
     typeInput.value = '';
     allergiesInput.value = '';
   };
+  myItemsMenuButton.onclick();
 }, false);
