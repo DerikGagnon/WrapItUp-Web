@@ -82,10 +82,10 @@ function createItemElement(itemId, name, price, type, allergies, description) {
           '<span class="star">' +
             '<button class="mdl-button delete-button"><div>Delete</div></button>' +
           '</span>' +
-          '<div class="price item text"></div>' +
-          '<div class="type item text"></div>' +
-          '<div class="allergies item text"></div>' +
-          '<div class="description item text"></div>' +
+          '<div class="price item text">Price: $</div>' +
+          '<div class="type item text">Type: </div>' +
+          '<div class="allergies item text">Allergies: </div>' +
+          '<div class="description item text">Description: </div>' +
         '</div>' +
       '</div>';
 
@@ -100,10 +100,10 @@ function createItemElement(itemId, name, price, type, allergies, description) {
   // }
 
   // Set values.
-  itemElement.getElementsByClassName('price')[0].innerText = price;
-  itemElement.getElementsByClassName('type')[0].innerText = type;
-  itemElement.getElementsByClassName('allergies')[0].innerText = allergies;
-  itemElement.getElementsByClassName('description')[0].innerText = description;
+  itemElement.getElementsByClassName('price')[0].innerText += price;
+  itemElement.getElementsByClassName('type')[0].innerText += type;
+  itemElement.getElementsByClassName('allergies')[0].innerText += allergies;
+  itemElement.getElementsByClassName('description')[0].innerText += description;
   itemElement.getElementsByClassName('mdl-card__title-text')[0].innerText = name;
 
   return itemElement;
