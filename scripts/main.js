@@ -32,6 +32,10 @@ var userItemsSection = document.getElementById('user-posts-list');
 var myItemsMenuButton = document.getElementById('menu-my-posts');
 var listeningFirebaseRefs = [];
 
+var storageRef = firebase.storage().ref();
+
+document.querySelector('.file-select').addEventListener('change', handleFileUploadChange);
+document.querySelector('.file-submit').addEventListener('click', handleFileUploadSubmit);
 /**
  * Saves a new post to the Firebase DB.
  * writeNewMenuItem(firebase.auth().currentUser.uid, *firebase.auth().currentUser.photoURL,* name, price, type, allergies, description);
@@ -279,3 +283,22 @@ window.addEventListener('load', function() {
   };
   myItemsMenuButton.onclick();
 }, false);
+
+let selectedFile;
+function handleFileUploadChange(e) {
+    selectedFile = e.target.files[0];
+}
+
+function handleFileUploadSubmit(e) {
+    const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
+    uploadTask.on('state_changed', (snapshot) => {
+                  // Observe state change events such as progress, pause, and resume
+                  }, (error) => {
+                  // Handle unsuccessful uploads
+                  console.log(error);
+                  }, () => {
+                  // Do something once upload is complete
+                  console.log('success');
+                  });
+}
+
