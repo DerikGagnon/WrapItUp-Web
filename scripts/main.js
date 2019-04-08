@@ -312,7 +312,7 @@ function handleFileUploadSubmit(e) {
                   console.log('success');
                   });
 }
-deleteButton.onclic = onDeleteClick;
+deleteButton.onclick = onDeleteClick;
 var onDeleteClick = function() {
     console.log("Ahhhhh");
 }
