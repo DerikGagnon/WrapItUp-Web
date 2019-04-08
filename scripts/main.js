@@ -36,12 +36,13 @@ var storageRef = firebase.storage().ref();
 
 document.querySelector('.file-select').addEventListener('change', handleFileUploadChange);
 document.querySelector('.file-submit').addEventListener('click', handleFileUploadSubmit);
+let selectedFile;
 /**
  * Saves a new post to the Firebase DB.
  * writeNewMenuItem(firebase.auth().currentUser.uid, *firebase.auth().currentUser.photoURL,* name, price, type, allergies, description);
  */
 // [START write_fan_out]
-function writeNewMenuItem(uid, name, price, type, allergies, description) {
+function writeNewMenuItem(uid, name, price, type, allergies, description, url) {
   // A post entry.
   var itemData = {
     name: name,
@@ -49,7 +50,8 @@ function writeNewMenuItem(uid, name, price, type, allergies, description) {
     price: price,
     /*itemPicture: picture,*/
     itemType: type,
-    itemAllergies: allergies
+    itemAllergies: allergies,
+    imageUrl: url
   };
 
   // Get a key for a new Item.
@@ -68,7 +70,7 @@ function writeNewMenuItem(uid, name, price, type, allergies, description) {
  */
 
  /*  -------------------------------------------------------------------- ITEM CREATION ---------------------------------------------------------------- */
-function createItemElement(itemId, name, price, type, allergies, description) {
+function createItemElement(itemId, name, price, type, allergies, description, dataImage) {
   var uid = firebase.auth().currentUser.uid;
 
   var html =
@@ -79,13 +81,11 @@ function createItemElement(itemId, name, price, type, allergies, description) {
             '<h4 class="mdl-card__title-text"></h4>' +
           '</div>' +
           '<div class="header">' +
-            '<div>' +
-              '<div class="itemname mdl-color-text--black"></div>' +
-            '</div>' +
           '</div>' +
           '<span class="star">' +
             '<button class="mdl-button delete-button"><div>Delete</div></button>' +
           '</span>' +
+          '<img class="imageUrl imageSize">' +
           '<div class="price item text">Price: $</div>' +
           '<div class="type item text">Type: </div>' +
           '<div class="allergies item text">Allergies: </div>' +
@@ -109,6 +109,12 @@ function createItemElement(itemId, name, price, type, allergies, description) {
   itemElement.getElementsByClassName('allergies')[0].innerText += allergies;
   itemElement.getElementsByClassName('description')[0].innerText += description;
   itemElement.getElementsByClassName('mdl-card__title-text')[0].innerText = name;
+  storageRef.child(dataImage).getDownloadURL().then(function(url){
+                       itemElement.getElementsByClassName('imageUrl')[0].src = url;
+                                                    }).catch(function(error) {
+                                                             console.log("It sure did error, you bet your sweet bippy");
+                                                             });
+  
 
   return itemElement;
 }
@@ -129,8 +135,9 @@ function startDatabaseQueries() {
       console.log(data.val().itemType);
       console.log(data.val().itemAllergies);
       console.log(data.val().description);
+      console.log(data.val().imageUrl);
       containerElement.insertBefore(
-        createItemElement(data.key, data.val().name, data.val().price, data.val().itemType, data.val().itemAllergies, data.val().description),
+        createItemElement(data.key, data.val().name, data.val().price, data.val().itemType, data.val().itemAllergies, data.val().description, data.val().imageUrl),
         containerElement.firstChild);
     });
     itemsRef.on('child_changed', function(data) {
@@ -203,14 +210,14 @@ function onAuthStateChanged(user) {
  * Creates a new post for the current user.
  * newMenuItem(name, price, type, allergies, description)
  */
-function newMenuItem(name, price, type, allergies, description) {
+function newMenuItem(name, price, type, allergies, description, url) {
   // [START single_value_read]
   var userId = firebase.auth().currentUser.uid;
   return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
     // [START_EXCLUDE]
     return writeNewMenuItem(firebase.auth().currentUser.uid,
       /*firebase.auth().currentUser.photoURL,*/
-      name, price, type, allergies, description);
+      name, price, type, allergies, description, url);
     // [END_EXCLUDE]
   });
   // [END single_value_read]
@@ -256,9 +263,10 @@ window.addEventListener('load', function() {
     var price = priceInput.value;
     var type = typeInput.value;
     var allergies = allergiesInput.value;
+    var url = `images/${selectedFile.name}`;
     //add image var
-    if (description && name && price && type && allergies) {
-      newMenuItem(name, price, type, allergies, description).then(function() {
+    if (description && name && price && type && allergies && url) {
+      newMenuItem(name, price, type, allergies, description, url).then(function() {
         myItemsMenuButton.click();
       });
       descriptionInput.value = '';
@@ -284,7 +292,7 @@ window.addEventListener('load', function() {
   myItemsMenuButton.onclick();
 }, false);
 
-let selectedFile;
+
 function handleFileUploadChange(e) {
     selectedFile = e.target.files[0];
 }
