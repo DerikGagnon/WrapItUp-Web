@@ -114,7 +114,7 @@ function createItemElement(itemId, name, price, type, allergies, description) {
  */
 function startDatabaseQueries() {
   var myUserId = firebase.auth().currentUser.uid;
-  var userItems = firebase.database().ref('user-items/' + myUserId).orderByChild('title');
+  var userItems = firebase.database().ref('user-items/' + myUserId).orderByChild('name');
 
   var fetchItems = function(itemsRef, sectionElement) {
     itemsRef.on('child_added', function(data) {
