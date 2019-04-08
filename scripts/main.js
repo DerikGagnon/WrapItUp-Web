@@ -32,10 +32,13 @@ var userItemsSection = document.getElementById('user-posts-list');
 var myItemsMenuButton = document.getElementById('menu-my-posts');
 var listeningFirebaseRefs = [];
 
+var deleteButton = document.getElementById('delete-button');
+
 var storageRef = firebase.storage().ref();
 
 document.querySelector('.file-select').addEventListener('change', handleFileUploadChange);
 document.querySelector('.file-submit').addEventListener('click', handleFileUploadSubmit);
+document.addEventListener;
 let selectedFile;
 /**
  * Saves a new post to the Firebase DB.
@@ -310,3 +313,6 @@ function handleFileUploadSubmit(e) {
                   });
 }
 
+deleteButton.onclick = function() {
+    console.log("Ahhhhh");
+}
