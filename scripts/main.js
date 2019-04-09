@@ -320,7 +320,7 @@ function onDelete(button) {
   let itemId = item.getAttribute('data-id');
   //console.log(itemId);
   //var userItems = firebase.database().ref('user-items/' + myUserId).orderByChild('name');
-  firebase.database().ref('user-items/' + myUserId).child(itemId).remove(function(error){
+  firebase.database().ref('user-items/' + myUserId + '/' + itemId).remove(function(error){
     console.log("Bippy boy it didnt delete");
     });
 }
