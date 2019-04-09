@@ -314,10 +314,13 @@ function handleFileUploadSubmit(e) {
                   });
 }
 function onDelete(button) {
-    let item = button.parentElement.parentElement.parentElement;
-    let itemId = item.getAttribute('data-id');
-    console.log(firebase.database().ref('user-items').child(itemId));
-    firebase.database().ref('user-items').child(itemId).remove(function(error){
-                                                   console.log("Bippy boy it didnt delete");
-                                                   });
+
+  var myUserId = firebase.auth().currentUser.uid;
+  let item = button.parentElement.parentElement.parentElement;
+  let itemId = item.getAttribute('data-id');
+  //console.log(itemId);
+  //var userItems = firebase.database().ref('user-items/' + myUserId).orderByChild('name');
+  firebase.database().ref('user-items/' + myUserId).child(itemId).remove(function(error){
+    console.log("Bippy boy it didnt delete");
+    });
 }
