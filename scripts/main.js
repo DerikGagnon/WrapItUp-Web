@@ -133,13 +133,13 @@ function startDatabaseQueries() {
   var fetchItems = function(itemsRef, sectionElement) {
     itemsRef.on('child_added', function(data) {
       var containerElement = sectionElement.getElementsByClassName('items-container')[0];
-      console.log(data.key);
+      /*console.log(data.key);
       console.log(data.val().name);
       console.log(data.val().price);
       console.log(data.val().itemType);
       console.log(data.val().itemAllergies);
       console.log(data.val().description);
-      console.log(data.val().imageUrl);
+      console.log(data.val().imageUrl);*/
       containerElement.insertBefore(
         createItemElement(data.key, data.val().name, data.val().price, data.val().itemType, data.val().itemAllergies, data.val().description, data.val().imageUrl),
         containerElement.firstChild);
@@ -316,8 +316,8 @@ function handleFileUploadSubmit(e) {
 function onDelete(button) {
     let item = button.parentElement.parentElement.parentElement;
     let itemId = item.getAttribute('data-id');
-    //console.log(itemId);
-    firebase.database().ref().child(itemId).remove(function(error){
+    console.log(firebase.database().ref('user-items').child(itemId));
+    firebase.database().ref('user-items').child(itemId).remove(function(error){
                                                    console.log("Bippy boy it didnt delete");
                                                    });
 }
