@@ -323,4 +323,5 @@ function onDelete(button) {
   firebase.database().ref('user-items/' + myUserId + '/' + itemId).remove(function(error){
     console.log("Bippy boy it didnt delete");
     });
+    location.reload();
 }
