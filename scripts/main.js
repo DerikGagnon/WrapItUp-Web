@@ -78,7 +78,8 @@ function createItemElement(itemId, name, price, type, allergies, description, da
 
   var html =
       '<div class="item item-' + itemId + ' mdl-cell mdl-cell--12-col ' +
-                  'mdl-cell--6-col-tablet mdl-cell--4-col-desktop mdl-grid mdl-grid--no-spacing">' +
+                  'mdl-cell--6-col-tablet mdl-cell--4-col-desktop mdl-grid mdl-grid--no-spacing"' +
+                ' data-id="' + itemId + '">' +
         '<div class="mdl-card mdl-shadow--2dp">' +
           '<div class="mdl-card__title mdl-color-text--white main-color">' +
             '<h4 class="mdl-card__title-text"></h4>' +
@@ -86,7 +87,7 @@ function createItemElement(itemId, name, price, type, allergies, description, da
           '<div class="header">' +
           '</div>' +
           '<span class="star">' +
-            '<button class="mdl-button delete-button"><div>Delete</div></button>' +
+            '<button class="mdl-button delete-button" onClick = "onDelete(this)"><div>Delete</div></button>' +
           '</span>' +
           '<img class="imageUrl imageSize">' +
           '<div class="price item text">Price: $</div>' +
@@ -312,7 +313,11 @@ function handleFileUploadSubmit(e) {
                   console.log('success');
                   });
 }
-deleteButton.onclick = onDeleteClick;
-var onDeleteClick = function() {
-    console.log("Ahhhhh");
+function onDelete(button) {
+    let item = button.parentElement.parentElement.parentElement;
+    let itemId = item.getAttribute('data-id');
+    //console.log(itemId);
+    firebase.database().ref().child(itemId).remove(function(error){
+                                                   console.log("Bippy boy it didnt delete");
+                                                   });
 }
