@@ -350,7 +350,7 @@ h3 {
 /*Image Sizing*/
 .imageSize{
     max-width: 100%;
-    height: auto;
+    height: 200px;
 }
 
 /* Item Name sizing */

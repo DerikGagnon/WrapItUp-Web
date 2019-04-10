@@ -261,23 +261,26 @@ window.addEventListener('load', function() {
 
   //Saves message on form submit.
   messageForm.onsubmit = function(e) {
+    var uid = firebase.auth().currentUser.uid;
     e.preventDefault();
     var description = descriptionInput.value;
     var name = nameInput.value;
     var price = priceInput.value;
     var type = typeInput.value;
     var allergies = allergiesInput.value;
-    var url = `images/${selectedFile.name}`;
+    // Need to implement different way of storing images
+    var url = `images/${uid}/${selectedFile.name}`;
     //add image var
     if (description && name && price && type && allergies && url) {
       newMenuItem(name, price, type, allergies, description, url).then(function() {
-        myItemsMenuButton.click();
+        setTimeout(myItemsMenuButton.click(), 1000)
       });
       descriptionInput.value = '';
       nameInput.value = '';
       priceInput.value = '';
       typeInput.value = '';
       allergiesInput.value = '';
+      selectedFile = null
     }
   };
 
@@ -292,8 +295,9 @@ window.addEventListener('load', function() {
     priceInput.value = '';
     typeInput.value = '';
     allergiesInput.value = '';
+    selectedFile = null
   };
-  myItemsMenuButton.onclick();
+  myItemsMenuButton.onclick(); 
 }, false);
 
 
@@ -302,7 +306,8 @@ function handleFileUploadChange(e) {
 }
 
 function handleFileUploadSubmit(e) {
-    const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
+  var uid = firebase.auth().currentUser.uid;
+    const uploadTask = storageRef.child(`images/${uid}/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
     uploadTask.on('state_changed', (snapshot) => {
                   // Observe state change events such as progress, pause, and resume
                   }, (error) => {
@@ -323,5 +328,5 @@ function onDelete(button) {
   firebase.database().ref('user-items/' + myUserId + '/' + itemId).remove(function(error){
     console.log("Bippy boy it didnt delete");
     });
-    location.reload();
+    setTimeout(location.reload(), 1000);
 }
