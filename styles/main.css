@@ -352,3 +352,8 @@ h3 {
     max-width: 100%;
     height: auto;
 }
+
+/* Item Name sizing */
+.name-text {
+    padding-right: 20%
+}

@@ -82,7 +82,7 @@ function createItemElement(itemId, name, price, type, allergies, description, da
                 ' data-id="' + itemId + '">' +
         '<div class="mdl-card mdl-shadow--2dp">' +
           '<div class="mdl-card__title mdl-color-text--white main-color">' +
-            '<h4 class="mdl-card__title-text"></h4>' +
+            '<h4 class="mdl-card__title-text name-text"></h4>' +
           '</div>' +
           '<div class="header">' +
           '</div>' +
@@ -128,7 +128,7 @@ function createItemElement(itemId, name, price, type, allergies, description, da
  */
 function startDatabaseQueries() {
   var myUserId = firebase.auth().currentUser.uid;
-  var userItems = firebase.database().ref('user-items/' + myUserId).orderByChild('name');
+  var userItems = firebase.database().ref('user-items/' + myUserId).orderByChild('type');
 
   var fetchItems = function(itemsRef, sectionElement) {
     itemsRef.on('child_added', function(data) {
