@@ -11,9 +11,11 @@ To run the website locally follow these steps
 Using the site
 
 Sign in using a google account.
-Once signed in you will be met with the main menu page.
-Clicking the button on the top left allows you to add a new item.
-On this page you inpu the information of the item you wish to add and can even add a photo to the item.
-Once done click save and it will bring you back to the main page now showing the item you created.
+Once signed in, you will be met with the main menu page.
+Clicking the button on the top right allows you to add a new item.
+On this page you input the information of the item you wish to add and a photo for the item.
+Once done, click save and it will bring you back to the main page now showing the item you created.
 Every item you create will end up here.
 The delete button on the item will delete it from the page and the server.
+
+After adding or removing any items, these changes will be reflected on the iOS app found [here](https://github.com/DerikGagnon/Wrap-It-Up-Payments).
